@@ -27,7 +27,6 @@
         "path": "/shared/output/test1/depth/map.png",
         "method": "depth"
       },
-      "normal_map": null,
       "pose_detection": {
         "path": "/shared/output/test1/pose/pose.png",
         "method": "pose"
@@ -109,7 +108,6 @@
       }],
       "pointcloud_3d": {
         "path": "/shared/output/test1/pointcloud/cloud.ply",
-        "confidence": null,
         "method": "pointcloud"
       }
     }
