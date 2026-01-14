@@ -55,6 +55,17 @@ section {
   margin-bottom: 32px;
 }
 
+ .hero-visual {
+  margin-top: 16px;
+}
+
+.hero-visual img {
+  display: block;
+  max-width: min(100%, 720px);
+  width: 100%;
+  height: auto;
+}
+
 /* Headings */
 h2 {
   font-family: "Optima", "Candara", "Trebuchet MS", sans-serif;
