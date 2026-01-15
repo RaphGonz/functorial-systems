@@ -76,6 +76,20 @@
 
     ul { margin: 0.5rem 0 0; padding-left: 1.25rem; }
     li { margin: 0.25rem 0; }
+    details > summary {
+      cursor: pointer;
+      font-weight: 600;
+    }
+    pre {
+      white-space: pre-wrap;
+      word-break: break-word;
+      background: #f3f4f6;
+      border: 1px solid #e5e7eb;
+      border-radius: 0.5rem;
+      padding: 0.75rem;
+      margin: 0.75rem 0 0;
+      font-size: 0.9rem;
+    }
   </style>
 </head>
 
@@ -113,6 +127,7 @@
     <section>
       <div class="card">
         <h2>Solution</h2>
+        <img src="assets/diagrams/solution.png" alt="Solution diagram" />
         <p>Composable enrichment services where:</p>
         <ul>
           <li>Independent services perform specific enrichments (vision, geometry, semantics, etc.).</li>
@@ -126,6 +141,7 @@
     <section>
       <div class="card">
         <h2>What The System Does</h2>
+        <img src="assets/diagrams/what it does.png" alt="What the system does diagram" />
         <ul>
           <li>Multimodal data ingestion (image, text; audio/video planned).</li>
           <li>Modular enrichment services (depth, segmentation, object metadata, semantic annotations).</li>
@@ -133,6 +149,11 @@
           <li>Structured outputs as reusable data artifacts.</li>
           <li>Clear separation between data preparation and model training/inference.</li>
         </ul>
+        <img src="assets/diagrams/summary.png" alt="System summary diagram" />
+        <details>
+          <summary>View manifest.json</summary>
+          <pre id="manifest-json">Loading...</pre>
+        </details>
       </div>
     </section>
 
@@ -195,5 +216,15 @@
     </section>
 
   </div>
+  <script>
+    (function () {
+      var pre = document.getElementById("manifest-json");
+      if (!pre) return;
+      fetch("assets/stuff/manifest.json")
+        .then(function (resp) { return resp.text(); })
+        .then(function (text) { pre.textContent = text; })
+        .catch(function () { pre.textContent = "Unable to load manifest.json"; });
+    })();
+  </script>
 </body>
 </html>
