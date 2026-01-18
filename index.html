@@ -1,426 +1,421 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Functorial Systems</title>
 
-    <!-- Keep your external CSS if you want, but inline CSS below overrides it -->
-    <link rel="stylesheet" href="style.css" />
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Functorial Systems</title>
 
-    <!-- Style copied/adapted from the reference page -->
-    <style>
-      body {
-        font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-          sans-serif;
-        margin: 0;
-        padding: 0;
-        line-height: 1.6;
-        color: #111827;
-        background: #f9fafb;
-      }
-      a {
-        color: #2563eb;
-        text-decoration: none;
-      }
-      a:hover {
-        text-decoration: underline;
-      }
+  <!-- Keep your external CSS if you want, but inline CSS below overrides it -->
+  <link rel="stylesheet" href="style.css" />
 
-      .page {
-        max-width: 980px;
-        margin: 0 auto;
-        padding: 2.5rem 1.5rem 4rem;
-      }
+  <!-- Style copied/adapted from the reference page -->
+  <style>
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        sans-serif;
+      margin: 0;
+      padding: 0;
+      line-height: 1.6;
+      color: #111827;
+      background: #f9fafb;
+    }
 
-      header {
-        text-align: center;
-        margin-bottom: 2.5rem;
-      }
+    a {
+      color: #2563eb;
+      text-decoration: none;
+    }
 
-      h1 {
-        font-size: clamp(2.1rem, 3vw, 2.6rem);
-        margin: 0 0 0.5rem;
-      }
+    a:hover {
+      text-decoration: underline;
+    }
 
-      h2 {
-        margin: 0 0 0.75rem;
-        border-bottom: 1px solid #e5e7eb;
-        padding-bottom: 0.4rem;
-        font-size: 1.4rem;
-      }
+    .page {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 2.5rem 1.5rem 4rem;
+    }
 
-      .subtitle {
-        font-size: 1.05rem;
-        color: #4b5563;
-        margin: 0 0 1.25rem;
-      }
+    header {
+      text-align: center;
+      margin-bottom: 2.5rem;
+    }
 
-      .hero {
-        margin: 0 auto 1.5rem;
-        border-radius: 0.75rem;
-        overflow: hidden;
-        box-shadow: 0 18px 35px rgba(15, 23, 42, 0.22);
-        background: #000;
-        max-width: 980px;
-      }
-      .hero img {
-        display: block;
-        width: 100%;
-        height: auto;
-        max-width: 100%;
-      }
-      .centered-image {
-        display: block;
-        margin: 0.75rem auto 0;
-        max-width: 100%;
-        height: auto;
-      }
+    h1 {
+      font-size: clamp(2.1rem, 3vw, 2.6rem);
+      margin: 0 0 0.5rem;
+    }
 
-      section {
-        margin-top: 1.5rem;
-      }
+    h2 {
+      margin: 0 0 0.75rem;
+      border-bottom: 1px solid #e5e7eb;
+      padding-bottom: 0.4rem;
+      font-size: 1.4rem;
+    }
 
-      .card {
-        background: white;
-        border-radius: 0.75rem;
-        padding: 1.1rem 1.2rem;
-        border: 1px solid #e5e7eb;
-      }
+    .subtitle {
+      font-size: 1.05rem;
+      color: #4b5563;
+      margin: 0 0 1.25rem;
+    }
 
-      ul {
-        margin: 0.5rem 0 0;
-        padding-left: 1.25rem;
-      }
-      li {
-        margin: 0.25rem 0;
-      }
-      details > summary {
-        cursor: pointer;
-        font-weight: 600;
-      }
-      pre {
-        white-space: pre-wrap;
-        word-break: break-word;
-        background: #f3f4f6;
-        border: 1px solid #e5e7eb;
-        border-radius: 0.5rem;
-        padding: 0.75rem;
-        margin: 0.75rem 0 0;
-        font-size: 0.9rem;
-      }
+    .hero {
+      margin: 0 auto 1.5rem;
+      border-radius: 0.75rem;
+      overflow: hidden;
+      box-shadow: 0 18px 35px rgba(15, 23, 42, 0.22);
+      background: #000;
+      max-width: 980px;
+    }
 
-      .site-footer {
-        padding: 24px 16px;
-        border-top: 1px solid rgba(255, 255, 255, 0.1);
-      }
+    .hero img {
+      display: block;
+      width: 100%;
+      height: auto;
+      max-width: 100%;
+    }
 
-      .footer-inner {
-        max-width: 1100px;
-        margin: 0 auto;
-      }
+    .centered-image {
+      display: block;
+      margin: 0.75rem auto 0;
+      max-width: 100%;
+      height: auto;
+    }
 
-      .footer-line {
-        margin: 6px 0;
-        font-size: 0.9rem;
-        line-height: 1.4;
-        opacity: 0.85;
-      }
-    </style>
-  </head>
+    section {
+      margin-top: 1.5rem;
+    }
 
-  <body>
-    <div class="page">
-      <!-- build-check: comment added for CI verification -->
-      <header>
-        <img src="assets/logos/logo.png" alt="Functorial Systems logo" />
-        <p class="subtitle">
-          AI infrastructure for turning raw multimodal data into structured,
-          reusable artifacts.
+    .card {
+      background: white;
+      border-radius: 0.75rem;
+      padding: 1.1rem 1.2rem;
+      border: 1px solid #e5e7eb;
+    }
+
+    ul {
+      margin: 0.5rem 0 0;
+      padding-left: 1.25rem;
+    }
+
+    li {
+      margin: 0.25rem 0;
+    }
+
+    details>summary {
+      cursor: pointer;
+      font-weight: 600;
+    }
+
+    pre {
+      white-space: pre-wrap;
+      word-break: break-word;
+      background: #f3f4f6;
+      border: 1px solid #e5e7eb;
+      border-radius: 0.5rem;
+      padding: 0.75rem;
+      margin: 0.75rem 0 0;
+      font-size: 0.9rem;
+    }
+
+    .site-footer {
+      padding: 24px 16px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .footer-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .footer-line {
+      margin: 6px 0;
+      font-size: 0.9rem;
+      line-height: 1.4;
+      opacity: 0.85;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="page">
+    <!-- build-check: comment added for CI verification -->
+    <header>
+      <img src="assets/logos/logo.png" alt="Functorial Systems logo" />
+      <p class="subtitle">
+        AI infrastructure for turning raw multimodal data into structured,
+        reusable artifacts.
+      </p>
+      <div class="hero">
+        <img src="assets/animations/enrichment2.gif" alt="Enrichment pipeline animation" />
+      </div>
+    </header>
+
+    <section>
+      <div class="card">
+        <h2>Overview</h2>
+        <p>
+          Functorial Systems builds a Functorial Data Refinery: a modular
+          system that transforms raw data (images and text; audio and video soon)
+          into typed, reusable data artifacts for production AI systems.
         </p>
-        <div class="hero">
-          <img
-            src="assets/animations/enrichment2.gif"
-            alt="Enrichment pipeline animation"
-          />
-        </div>
-      </header>
-
-      <section>
-        <div class="card">
-          <h2>Overview</h2>
-          <p>
-            Functorial Systems builds a Functorial Data Refinery: a modular
-            system that transforms raw data (images, text; audio/video planned)
-            into typed, reusable data artifacts for production AI systems. The
-            focus is data structure, testable quality, and reuse — not model
-            performance.
-          </p>
-        </div>
-      </section>
-
-      <section>
-        <div class="card">
-          <h2>Problem</h2>
-          <p>Modern AI pipelines struggle to industrialize because:</p>
-          <ul>
-            <li>Raw data is heterogeneous and weakly structured.</li>
-            <li>
-              Pipelines are ad-hoc and tightly coupled to specific models.
-            </li>
-            <li>Enrichments are not reusable across tasks or models.</li>
-            <li>Scaling introduces operational and governance complexity.</li>
-          </ul>
-        </div>
-      </section>
-
-      <section>
-        <div class="card">
-          <h2>Solution</h2>
-          <img
-            class="centered-image"
-            src="assets/diagrams/solution.png"
-            alt="Solution diagram"
-          />
-          <p>Composable enrichment services where:</p>
-          <ul>
-            <li>
-              Independent services perform specific enrichments (vision,
-              geometry, semantics, etc.).
-            </li>
-            <li>Each service declares explicit inputs and outputs.</li>
-            <li>
-              Outputs are merged into normalized, typed data schemas (e.g. JSON
-              artifacts).
-            </li>
-            <li>
-              The same enriched data can be reused across multiple models and
-              workflows.
-            </li>
-            <li>
-              Optional conformance checks prevent error propagation and enable
-              quality grades.
-            </li>
-          </ul>
-        </div>
-      </section>
-
-      <section>
-        <div class="card">
-          <h2>Product Path</h2>
-          <p>3 layers :</p>
-          <ul>
-            <li>
-              <b>Refine</b>: standardized enriched artifacts (typed schemas +
-              provenance).
-            </li>
-            <li>
-              <b>Refine + Customize</b>: client-specific enrichments, schemas,
-              and routing (profiles, rules, adapters).
-            </li>
-            <li>
-              <b>Refine + Customize + Test</b>: conformance tests, quality
-              gates, and signed reports (grades).
-            </li>
-          </ul>
-        </div>
-      </section>
-
-      <section>
-        <div class="card">
-          <h2>Product Path</h2>
-          <p>3 layers :</p>
-          <ul>
-            <li>
-              <b>Refine</b>: standardized enriched artifacts (typed schemas +
-              provenance).
-            </li>
-            <li>
-              <b>Refine + Customize</b>: client-specific enrichments, schemas,
-              and routing (profiles, rules, adapters).
-            </li>
-            <li>
-              <b>Refine + Customize + Test</b>: conformance tests, quality
-              gates, and signed reports (grades).
-            </li>
-          </ul>
-          <img src="assets/diagrams/Before.png" alt="Before After diagram" />
-        </div>
-      </section>
-
-      <section>
-        <div class="card">
-          <h2>Commercial Offer</h2>
-          <ul>
-            <li>
-              <b>Usage-based API</b>: priced per item and per enrichment type
-              (depth, segmentation, OCR, semantics, etc.).
-            </li>
-            <li>
-              <b>Enterprise deployment (on-prem / VPC)</b>: license +
-              maintenance for sensitive data and control.
-            </li>
-            <li>
-              <b>Compliance pack</b>: automated reports (schema validity,
-              invariants, abstention/outliers/duplicates, provenance).
-            </li>
-          </ul>
-        </div>
-      </section>
-
-      <section>
-        <div class="card">
-          <h2>What The System Does</h2>
-          <img
-            src="assets/diagrams/what it does.png"
-            alt="What the system does diagram"
-          />
-          <ul>
-            <li>
-              Multimodal data ingestion (image, text; audio/video planned).
-            </li>
-            <li>
-              Modular enrichment services (depth, segmentation, object metadata,
-              semantic annotations).
-            </li>
-            <li>
-              Explicit orchestration via declared dependencies (needs / fills).
-            </li>
-            <li>Structured outputs as reusable data artifacts.</li>
-            <li>
-              Clear separation between data preparation and model
-              training/inference.
-            </li>
-          </ul>
-          <img src="assets/diagrams/summary.png" alt="System summary diagram" />
-          <details>
-            <summary>View manifest.json</summary>
-            <pre id="manifest-json">Loading...</pre>
-          </details>
-        </div>
-      </section>
-
-      <section>
-        <div class="card">
-          <h2>What This Is Not</h2>
-          <ul>
-            <li>Not an end-user application.</li>
-            <li>Not a monolithic AI model.</li>
-            <li>Not a prompt framework.</li>
-            <li>Not a demo-first or UI-driven product.</li>
-          </ul>
-        </div>
-      </section>
-
-      <section>
-        <div class="card">
-          <h2>Long-Term Direction</h2>
-          <img
-            class="centered-image"
-            src="assets/diagrams/longterm2.png"
-            alt="Long-term direction diagram"
-          />
-          <ul>
-            <li>
-              Interoperable enriched data via stable schemas, profiles, and
-              conformance tests.
-            </li>
-            <li>
-              Signed data artifacts for audit and governance workflows, to
-              create a new standard.
-            </li>
-            <li>
-              Research toward universal multimodal embeddings (open-core
-              compatible).
-            </li>
-            <li>
-              Data-centric foundations for reliable, governable AI systems.
-            </li>
-          </ul>
-        </div>
-      </section>
-
-      <section>
-        <div class="card">
-          <h2>Current Status</h2>
-          <ul>
-            <li>MVP / prototype under active development.</li>
-            <li>Initial scope: image and text.</li>
-            <li>Demo: internal / work in progress.</li>
-            <li>
-              Focus: infrastructure design, system correctness, composability.
-            </li>
-          </ul>
-        </div>
-      </section>
-
-      <section>
-        <div class="card">
-          <h2>Public Page Constraints</h2>
-          <ul>
-            <li>No internal code exposed.</li>
-            <li>No false demo claims.</li>
-            <li>Minimal, research-oriented presentation.</li>
-            <li>Static GitHub Pages site (HTML/CSS only).</li>
-          </ul>
-        </div>
-      </section>
-
-      <section>
-        <div class="card">
-          <h2>Contact</h2>
-          <ul>
-            <li>Project: Functorial Systems</li>
-            <li>Event: WAICF 2026</li>
-            <li>
-              Email:
-              <a href="mailto:contact@functorialsystems.ai"
-                >contact@functorialsystems.ai</a
-              >
-            </li>
-          </ul>
-        </div>
-      </section>
-    </div>
-    <script>
-      (function () {
-        var pre = document.getElementById("manifest-json");
-        if (!pre) return;
-        fetch("assets/stuff/manifest.json")
-          .then(function (resp) {
-            return resp.text();
-          })
-          .then(function (text) {
-            pre.textContent = text;
-          })
-          .catch(function () {
-            pre.textContent = "Unable to load manifest.json";
-          });
-      })();
-    </script>
-
-    <footer class="site-footer" role="contentinfo">
-      <div class="footer-inner">
-        <p class="footer-line">
-          © 2026 Functorial Systems — All rights reserved.
-        </p>
-
-        <p class="footer-line">
-          All content on this website (text, diagrams, concepts presentation,
-          structure and visuals) is protected by copyright and intellectual
-          property laws.
-        </p>
-
-        <p class="footer-line">
-          Any reproduction, extraction, reuse or adaptation, in whole or in
-          part, without prior written permission is strictly prohibited.
-        </p>
-
-        <p class="footer-line">
-          This project has been subject to a formal proof of anteriority filing (Soleau)
-          and will be subject to further intellectual property protections.
+        <p>
+          The focus is data structure, testable quality, and reuse. Not model
+          performance.
         </p>
       </div>
-    </footer>
-  </body>
+    </section>
+
+    <section>
+      <div class="card">
+        <h2>Problem</h2>
+        <p>Modern AI pipelines struggle to industrialize because:</p>
+        <ul>
+          <li>Raw data is heterogeneous and weakly structured.</li>
+          <li>
+            Pipelines are ad-hoc and tightly coupled to specific models.
+          </li>
+          <li>Enrichments are not reusable across tasks or models.</li>
+          <li>Scaling introduces operational and governance complexity.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section>
+      <div class="card">
+        <h2>Solution</h2>
+        <img class="centered-image" src="assets/diagrams/solution.png" alt="Solution diagram" />
+        <p>Composable enrichment services where:</p>
+        <ul>
+          <li>
+            Independent services perform specific enrichments (vision,
+            geometry, semantics, etc.).
+          </li>
+          <li>Each service declares explicit inputs and outputs.</li>
+          <li>
+            Outputs are merged into normalized, typed data schemas (e.g. JSON
+            artifacts).
+          </li>
+          <li>
+            The same enriched data can be reused across multiple models and
+            workflows.
+          </li>
+          <li>
+            Optional conformance checks prevent error propagation and enable
+            quality grades.
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section>
+      <div class="card">
+        <h2>Product Path</h2>
+        <p>3 layers :</p>
+        <ul>
+          <li>
+            <b>Refine</b>: standardized enriched artifacts (typed schemas +
+            provenance).
+          </li>
+          <li>
+            <b>Refine + Customize</b>: client-specific enrichments, schemas,
+            and routing (profiles, rules, adapters).
+          </li>
+          <li>
+            <b>Refine + Customize + Test</b>: conformance tests, quality
+            gates, and signed reports (grades).
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section>
+      <div class="card">
+        <h2>Product Path</h2>
+        <p>3 layers :</p>
+        <ul>
+          <li>
+            <b>Refine</b>: standardized enriched artifacts (typed schemas +
+            provenance).
+          </li>
+          <li>
+            <b>Refine + Customize</b>: client-specific enrichments, schemas,
+            and routing (profiles, rules, adapters).
+          </li>
+          <li>
+            <b>Refine + Customize + Test</b>: conformance tests, quality
+            gates, and signed reports (grades).
+          </li>
+        </ul>
+        <img src="assets/diagrams/Before.png" alt="Before After diagram" />
+      </div>
+    </section>
+
+    <section>
+      <div class="card">
+        <h2>Commercial Offer</h2>
+        <ul>
+          <li>
+            <b>Usage-based API</b>: priced per item and per enrichment type
+            (depth, segmentation, OCR, semantics, etc.).
+          </li>
+          <li>
+            <b>Enterprise deployment (on-prem / VPC)</b>: license +
+            maintenance for sensitive data and control.
+          </li>
+          <li>
+            <b>Compliance pack</b>: automated reports (schema validity,
+            invariants, abstention/outliers/duplicates, provenance).
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section>
+      <div class="card">
+        <h2>What The System Does</h2>
+        <img src="assets/diagrams/what it does.png" alt="What the system does diagram" />
+        <ul>
+          <li>
+            Multimodal data ingestion (image, text; audio/video planned).
+          </li>
+          <li>
+            Modular enrichment services (depth, segmentation, object metadata,
+            semantic annotations).
+          </li>
+          <li>
+            Explicit orchestration via declared dependencies (needs / fills).
+          </li>
+          <li>Structured outputs as reusable data artifacts.</li>
+          <li>
+            Clear separation between data preparation and model
+            training/inference.
+          </li>
+        </ul>
+        <img src="assets/diagrams/summary.png" alt="System summary diagram" />
+        <details>
+          <summary>View manifest.json</summary>
+          <pre id="manifest-json">Loading...</pre>
+        </details>
+      </div>
+    </section>
+
+    <section>
+      <div class="card">
+        <h2>What This Is Not</h2>
+        <ul>
+          <li>Not an end-user application.</li>
+          <li>Not a monolithic AI model.</li>
+          <li>Not a prompt framework.</li>
+          <li>Not a demo-first or UI-driven product.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section>
+      <div class="card">
+        <h2>Long-Term Direction</h2>
+        <img class="centered-image" src="assets/diagrams/longterm2.png" alt="Long-term direction diagram" />
+        <ul>
+          <li>
+            Interoperable enriched data via stable schemas, profiles, and
+            conformance tests.
+          </li>
+          <li>
+            Signed data artifacts for audit and governance workflows, to
+            create a new standard.
+          </li>
+          <li>
+            Research toward universal multimodal embeddings (open-core
+            compatible).
+          </li>
+          <li>
+            Data-centric foundations for reliable, governable AI systems.
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section>
+      <div class="card">
+        <h2>Current Status</h2>
+        <ul>
+          <li>MVP / prototype under active development.</li>
+          <li>Initial scope: image and text.</li>
+          <li>Demo: internal / work in progress.</li>
+          <li>
+            Focus: infrastructure design, system correctness, composability.
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section>
+      <div class="card">
+        <h2>Public Page Constraints</h2>
+        <ul>
+          <li>No internal code exposed.</li>
+          <li>No false demo claims.</li>
+          <li>Minimal, research-oriented presentation.</li>
+          <li>Static GitHub Pages site (HTML/CSS only).</li>
+        </ul>
+      </div>
+    </section>
+
+    <section>
+      <div class="card">
+        <h2>Contact</h2>
+        <ul>
+          <li>Project: Functorial Systems</li>
+          <li>Event: WAICF 2026</li>
+          <li>
+            Email:
+            <a href="mailto:contact@functorialsystems.ai">contact@functorialsystems.ai</a>
+          </li>
+        </ul>
+      </div>
+    </section>
+  </div>
+  <script>
+    (function () {
+      var pre = document.getElementById("manifest-json");
+      if (!pre) return;
+      fetch("assets/stuff/manifest.json")
+        .then(function (resp) {
+          return resp.text();
+        })
+        .then(function (text) {
+          pre.textContent = text;
+        })
+        .catch(function () {
+          pre.textContent = "Unable to load manifest.json";
+        });
+    })();
+  </script>
+
+  <footer class="site-footer" role="contentinfo">
+    <div class="footer-inner">
+      <p class="footer-line">
+        © 2026 Functorial Systems — All rights reserved.
+      </p>
+
+      <p class="footer-line">
+        All content on this website (text, diagrams, concepts presentation,
+        structure and visuals) is protected by copyright and intellectual
+        property laws.
+      </p>
+
+      <p class="footer-line">
+        Any reproduction, extraction, reuse or adaptation, in whole or in
+        part, without prior written permission is strictly prohibited.
+      </p>
+
+      <p class="footer-line">
+        This project has been subject to a formal proof of anteriority filing (Soleau)
+        and will be subject to further intellectual property protections.
+      </p>
+    </div>
+  </footer>
+</body>
+
 </html>
